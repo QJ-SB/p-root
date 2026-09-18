@@ -238,6 +238,47 @@ ROOT 当前实际目录结构以：
 
 ---
 
+### 5.1 Human and AI Project Entry
+
+项目默认区分两个入口：
+
+* `README.md`：面向人类，帮助快速理解项目目的、定位和主要导航
+* `project-instruction.md`：面向 AI，简要介绍项目并承担初始路由职责
+
+`README.md` 不承担 AI 行为指令或能力路由职责，默认不需要装载进 GPT Project Files 或同类 AI 项目文件环境。
+
+`project-instruction.md` 位于项目根目录。它只负责告诉 AI：
+
+* 项目是什么、边界在哪里
+* 哪个文件负责长期原则
+* 哪个文件负责当前事实
+* 当前任务应路由到哪个 skill 或 code
+
+它不复制 Foundation、Current、skill 或 code 的具体内容，也不建立第二份项目状态。
+
+---
+
+### 5.2 Project-Local Routing
+
+`project-instruction.md` 是项目内部的最小 router，不是中央运行时系统。
+
+项目规模较小时，当前任务所需的 `foundation.md`、`current.md`、skill 和 code 可以直接装载进 AI 项目文件环境，由 `project-instruction.md` 指向相应文件。
+
+只有真实使用证明文件数量或加载成本已经造成问题时，才考虑更细的索引、分层加载或外部工具。不得为潜在膨胀提前建设复杂路由系统。
+
+Router 只建立选择关系：
+
+* 需要稳定原则时，读取 Foundation
+* 需要当前事实时，读取 Current Snapshot
+* 需要专门行为能力时，读取匹配的 `src/skills/` 文件
+* 需要执行能力时，检查并使用匹配的 `src/code/` 文件
+
+文件被路由或装载不等于代码已经执行。代码执行仍需要可用的运行环境、明确的任务授权和必要验证。
+
+如果被路由的文件不可用，AI 不应假定其内容或虚构其能力。
+
+---
+
 ## `6. Source and Data Principles`
 
 ### src
