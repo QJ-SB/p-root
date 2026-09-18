@@ -1,0 +1,36 @@
+# IDE / Local settings
+
+.vscode/
+
+# Python virtual environment
+
+.venv/
+
+# Python cache
+
+**pycache**/
+*.pyc
+
+# Test / type / lint cache
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Temporary / log files
+
+*.tmp
+*.log
+
+# OS generated files
+
+.DS_Store
+Thumbs.db
+
+# Project data
+
+data/*
+
+# Keep data directory in Git
+
+!data/.gitkeep
