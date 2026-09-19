@@ -62,6 +62,12 @@ ROOT **不作为其他项目的中央运行系统**。
 
     `foundation/foundation.md`
 
+- 人类侧 AI 协作 meta-skills 见：
+
+    `foundation/human-layer-skills.md`
+
+  该文件仅供人类使用和维护，不装载进 GPT Project Files，也不参与 AI routing。
+
 - 当前 ROOT 的实际结构、状态与能力以：
 
     `context/snap/current.md`

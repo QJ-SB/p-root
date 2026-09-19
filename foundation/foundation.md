@@ -247,6 +247,10 @@ ROOT 当前实际目录结构以：
 
 `README.md` 不承担 AI 行为指令或能力路由职责，默认不需要装载进 GPT Project Files 或同类 AI 项目文件环境。
 
+ROOT 也允许维护面向人类自身的 Human Layer skills，用于辅助人类在 AI 协作中的 delegation、attention、externalization 等判断。其具体内容只维护在 `foundation/human-layer-skills.md`，作为该 concern 的唯一内容来源。
+
+`foundation/human-layer-skills.md` 是 Human-only artifact：它不进入 GPT Project Files，也不参与 AI routing。AI 只需要知道 Human Layer 的存在与边界，不默认读取或执行其中的具体 skills。
+
 `project-instruction.md` 位于项目根目录。它只负责告诉 AI：
 
 * 项目是什么、边界在哪里
