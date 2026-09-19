@@ -225,3 +225,76 @@ feat: add project routing, attention compression protocol, and test baseline
 ### Next
 
 停止继续扩建协议和测试系统。进入实际使用阶段，在 ROOT 与后续项目重构中复用该最小范式，并只根据反复出现的真实问题决定是否进行窄幅修正。
+
+---
+
+## 2026-09-19 — Human Layer Meta-Skills Baseline
+
+### Purpose
+
+本轮开窗用于处理 AI 协作中的一个人类侧真实问题：当任务目标、边界或关键决策仍存在 ambiguity 时，AI 会自然补全缺失部分；如果人类没有显式检查这些补全，AI 生成的设计可能在未经充分判断的情况下被默认为既定方案。
+
+因此，本轮不继续扩建 AI skill，而是建立一层独立的 Human Layer，用于帮助人类保持关键决策所有权、动态分配 attention，并通过 externalization 降低执行 drift。
+
+### Human Layer Established
+
+新增：
+
+```text
+foundation/human-layer-skills.md
+```
+
+该文件是 Human-only artifact，只供人类阅读和维护。
+
+它：
+
+- 不进入 GPT Project Files；
+- 不参与 AI routing；
+- 不作为 AI 行为指令；
+- 由 ROOT 记录其存在、职责与边界，但 AI 不默认读取或执行其中内容。
+
+### Frozen Meta-Skills
+
+本轮冻结两条 Human Layer meta-skill：
+
+> **Maintain human decision ownership by calibrating delegation and attention.**
+
+核心含义是：根据 delegation 可能带来的 consequence、ambiguity propagation 和 downstream impact，动态决定人类需要投入多少 attention；低后果、可逆和常规 ambiguity 可以留给 AI，重要 intent、constraints、design choices 与 decision boundaries 则需要更高的人类解析度。AI 可以扩展 option space，但 consequential decisions 不应在未经人类真正判断的情况下静默进入设计。
+
+> **Externalize critical state to keep AI execution observable and controllable.**
+
+核心含义是：当隐性状态会增加 ambiguity 或 drift 时，将重要目标、假设、决策、计划、预期动作和结果变化外部化，使 AI execution 可以被 inspection、comparison、review、freeze 与 revision。Externalization 不要求记录所有思考，其深度应随任务 consequence 动态调整；冻结状态作为当前 baseline 防止 silent drift，但可以在新证据或明确的人类判断下重新打开。
+
+### Project Integration
+
+为容纳 Human Layer，同时保持现有职责边界：
+
+- `foundation/foundation.md` 最小补充 Human Layer 的长期定位、canonical source 与 Human-only 边界；
+- `README.md` 增加 `foundation/human-layer-skills.md` 的人类导航；
+- `project-instruction.md` 经检查保持不变；
+- `src/skills/attention-compression-protocol.md` 经检查保持不变；
+- 不新增 Active Route；
+- 不新增测试体系。
+
+Human Layer 与 AI Layer 保持分离：ROOT 只让 AI 知道 Human Layer 的存在与边界，不把具体 Human skills 转化为默认 AI context 或行为规则。
+
+### Implementation Freeze
+
+本轮实际修改并冻结：
+
+```text
+foundation/human-layer-skills.md
+foundation/foundation.md
+README.md
+```
+
+检查确认：
+
+- 没有重复维护 meta-skill 正文；
+- 没有把 Human Layer 写成 AI requirement；
+- 没有加入 GPT Project Files 或 Active Routes；
+- 没有超出本轮已冻结的设计范围。
+
+### Next
+
+更新 `context/snap/current.md`，使其反映 Human Layer 已成为 ROOT 当前项目结构的一部分，同时继续保持 Human-only、non-routing、non-GPT-Project-Files 的边界。
