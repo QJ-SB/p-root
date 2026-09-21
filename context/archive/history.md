@@ -298,3 +298,93 @@ README.md
 ### Next
 
 更新 `context/snap/current.md`，使其反映 Human Layer 已成为 ROOT 当前项目结构的一部分，同时继续保持 Human-only、non-routing、non-GPT-Project-Files 的边界。
+
+---
+
+## 2026-09-21 — Evan-building Bootstrap and Distribution Validation
+
+### Purpose
+
+本轮开窗用于将 ROOT 当前已经建立的最小项目范式应用到一个真实 downstream project：
+
+> **为 Evan 的 2027 上海 Quant Developer capability-building 目标设计并 bootstrap 独立的 Evan-building 项目。**
+
+本轮同时用于观察：当需求本身复杂、涉及长期能力状态、学习运行方式、Session 管理与外部 artifact 时，ROOT 是否仍能维持 Single Responsibility、Minimal Vertical Slice、Canonical Truth 与 Attention Budget，而不重新膨胀成中央运行系统。
+
+### Applied Project Decisions
+
+Evan-building 最终被设计为独立的 capability-building control plane。
+
+本轮冻结的主要 downstream decisions 包括：
+
+- 将 C++、Python、Quant / QR literacy 与 Algorithm / LeetCode 统一放在一个 Evan-building 项目内，而不拆成多个自治学习项目；
+- 采用一个 Primary Growth Lane，并允许 C++ / Python 根据 capability bottleneck 与真实 QD workflow 动态切换；
+- 将 Algorithm / LeetCode 作为同一 North Star 下的轻量 Algorithm Maintenance Lane，通过独立 session 推进；
+- 将 Active Slice 与 Session 解耦：Active Slice 是 capability-growth unit，Session 只是 AI context container；
+- 继续采用一个 Current Snapshot + 一个 Rolling History 的 canonical-state pattern；
+- 为 Evan-building 建立三个职责正交的薄 project-local skills：
+  - Learning；
+  - Session Stewardship；
+  - Attention Compression；
+- training code 与长期 artifacts 继续维护为独立 sibling Git repositories，而不是纳入 Evan-building repo；
+- ROOT 只承担 build-time design / bootstrap / distribution，不成为 Evan-building 的 runtime dependency。
+
+这些决策属于 Evan-building 的当前项目设计与 ROOT 范式的一次应用，不自动升级为 ROOT 的通用规则。
+
+### ROOT Pattern Validation
+
+本轮实践验证了 ROOT 当前 baseline 可以支撑一个复杂但仍保持轻量的真实 downstream project bootstrap。
+
+实际使用中，以下 ROOT 原则均能够直接工作：
+
+- Single Responsibility；
+- Minimal Vertical Slice；
+- Attention Budget；
+- Resolution Discipline；
+- Evidence-Driven Expansion；
+- Canonical Truth；
+- project-local routing；
+- Current Snapshot + Rolling Archive；
+- ROOT 与 downstream project 的 runtime independence。
+
+本轮尤其验证了：
+
+> downstream project 可以吸收 ROOT 的稳定原则与项目骨架后独立运行，而无需 ROOT 成为中央控制器、共享状态源或持续 dependency。
+
+同时，本轮没有暴露出需要修改以下 ROOT baseline 的重复性问题：
+
+- `foundation/foundation.md`
+- `foundation/human-layer-skills.md`
+- `project-instruction.md`
+- `src/skills/attention-compression-protocol.md`
+- 当前测试体系
+
+因此：
+
+> **No ROOT architecture expansion was triggered.**
+
+Evan-building 中出现的 Learning Skill、Session Stewardship、Primary Growth Lane、Algorithm Maintenance Lane 等设计，目前仍视为 downstream-specific implementation choices。只有未来多个真实项目反复证明这些 concern 具有稳定通用性时，才考虑是否回收为 ROOT 范式。
+
+### Distribution Result
+
+Evan-building v1 baseline 已由人类在独立 repository 中完成部署、提交并同步至远程：
+
+```text
+eab2df4d8d2458c7f5a0ec0129ecef118bb84690
+feat: bootstrap Evan-building capability system
+```
+
+该 commit 仅作为本次 downstream distribution 的外部证据锚点。
+
+ROOT 不保存 Evan-building 的后续 Current State，也不负责其日常 capability-building runtime。
+
+### Next
+
+ROOT 继续处于 Operational Use。
+
+Evan-building 从此进入独立运行阶段，由其自身维护 North Star、Capability State、Active Slice、Session continuity 与后续 evidence。
+
+ROOT 默认不因本次成功案例继续扩建设计。
+
+后续继续使用当前 baseline 支持真实项目设计、重构与分发；只有多个实践反复暴露出同类、明显影响正确性、可控性或人工成本的问题时，才重新进入 ROOT 通用范式修正。
+

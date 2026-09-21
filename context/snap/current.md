@@ -1,14 +1,14 @@
 # ROOT — Current Snapshot
 
-**Snapshot Date:** 2026-09-19  
+**Snapshot Date:** 2026-09-21  
 **Stage:** Operational Use  
-**Status:** Project routing, Attention Compression Protocol, and Human Layer baseline operational
+**Status:** Project routing, Attention Compression Protocol, Human Layer baseline, and downstream bootstrap validation operational
 
 ---
 
 ## 1. Current Position
 
-ROOT 的最小项目骨架保持稳定，并已完成第二轮由真实需求驱动的能力扩展。
+ROOT 的最小项目骨架保持稳定，并已完成一次真实 downstream project bootstrap / distribution validation。
 
 现有 AI 侧 baseline 保持不变：
 
@@ -18,13 +18,24 @@ src/skills/attention-compression-protocol.md
 
 该 skill 继续作为当前唯一启用的 project-local skill，用于降低 AI 输出造成的人类 attention 与 review burden。
 
-本轮新增 Human Layer，用于承载人类自身的跨项目 AI 协作 meta-skills：
+Human Layer baseline 继续保持：
 
 ```text
 foundation/human-layer-skills.md
 ```
 
-该文件只供人类阅读和维护，不进入 GPT Project Files，不参与 AI routing，也不作为 AI 行为指令。ROOT 只记录这一层的存在、职责与边界。
+该文件只供人类阅读和维护，不进入 GPT Project Files，不参与 AI routing，也不作为 AI 行为指令。
+
+本轮真实使用中，ROOT 被用于设计并 bootstrap 独立的 Evan-building 项目。该实践验证了：
+
+- ROOT 当前最小骨架能够承载复杂 downstream project 的设计与分发；
+- downstream project 可以吸收 ROOT 原则后独立运行；
+- ROOT 不需要成为跨项目中央控制器、共享状态源或 runtime dependency；
+- 本轮没有出现需要修改 ROOT Foundation、router、Attention Compression Protocol、Human Layer 或测试体系的重复性问题。
+
+因此当前结论是：
+
+> **ROOT baseline remains sufficient; no architecture expansion is triggered.**
 
 ---
 
@@ -57,7 +68,16 @@ p-root/
 └── .gitattributes
 ```
 
-`src/code/` 当前仍为空。ROOT 没有中央 runtime、跨项目控制系统或自动 checkpoint 系统。
+`src/code/` 当前仍为空。
+
+ROOT 没有：
+
+- 中央 runtime；
+- 跨项目控制系统；
+- 自动 checkpoint 系统；
+- downstream project state registry。
+
+本轮实际应用没有要求新增目录、skill、code route 或测试层。
 
 ---
 
@@ -88,13 +108,16 @@ p-root/
 
 ### `foundation/foundation.md`
 
-ROOT 的长期设计总纲。当前已包含：
+ROOT 的长期设计总纲。
 
-- 人类/AI 双入口与 project-local routing 范式；
-- Human Layer 的长期定位与边界；
-- Human Layer 具体内容的 canonical source 指向。
+它维护：
 
-Foundation 不维护 Human Layer meta-skill 正文，也不维护当前状态、版本或 active route。
+- 通用项目范式；
+- 长期原则与边界；
+- Human Layer 的长期定位；
+- project-local routing 的稳定设计。
+
+Foundation 不维护 downstream project 的具体状态、版本或业务设计。
 
 ### `foundation/human-layer-skills.md`
 
@@ -137,43 +160,57 @@ Attention Compression Protocol 当前冻结的最后一次测试汇总，也是�
 
 ### Purpose
 
-将已经在真实 AI 协作中反复出现的人类侧经验凝结为一个轻量 Human Layer，同时避免继续把人类判断习惯错误地下沉为 AI skill 或固定 workflow。
+将 ROOT 当前已经建立的最小项目范式用于一个真实 downstream project：
+
+> **设计并 bootstrap 独立的 Evan-building capability-building project。**
+
+同时观察 ROOT 在面对长期能力状态、学习运行方式、Session 管理、外部 artifact 与复杂业务 evidence 时，是否会重新产生：
+
+- architecture inflation；
+- duplicate state；
+- unnecessary protocol；
+- cross-project dependency；
+- excessive review burden。
 
 ### Process
 
-1. 从“保持人类对关键决策的实际所有权”出发，讨论 delegation、attention、communication granularity 与 consequence 的关系。
-2. 冻结第一条 meta-skill：`Maintain human decision ownership by calibrating delegation and attention.`
-3. 从 externalization、observability 与 drift control 的真实协作经验出发，区分通用认知原则与高控制 execution pattern。
-4. 冻结第二条 meta-skill：`Externalize critical state to keep AI execution observable and controllable.`
-5. 创建 `foundation/human-layer-skills.md`，仅保存已冻结的 Human Layer meta-skills。
-6. 最小更新 Foundation 与 README；检查 `project-instruction.md` 和 Attention Compression Protocol 后均保持不变。
-7. 完成 implementation freeze review，并将本轮结果 rolling append 到 History。
+本轮主要经过：
+
+1. 从真实上海 QD Market Truth、Hiring Interface 和 Evan Capability evidence 出发，确认 downstream project 的目标与边界。
+2. 依据 ROOT 的 Single Responsibility 和 Minimal Vertical Slice 原则，将能力建设统一收敛为一个 Evan-building project，而不是拆成多个自治学习项目。
+3. 讨论并冻结 Active Slice、Session、Capability State、Primary Growth Lane 与 Algorithm Maintenance Lane 的职责边界。
+4. 将 AI leverage 与 human internalization 分离，形成 downstream-specific Learning Skill。
+5. 将 context-health / rollover / archive concern 分离，形成 downstream-specific Session Stewardship Skill。
+6. 将 ROOT 的 Attention Compression 思想迁移为 Evan-building 的本地 project skill，避免 runtime dependency。
+7. 保持 Current + Rolling History pattern，并将训练 artifacts 继续留在独立 sibling repositories。
+8. 对 Evan-building Foundation、Current、router 和 skills 做 duplication / attention-cost cleanup。
+9. Evan-building v1 baseline 由人类独立部署、commit 并同步至远程。
+10. 检查 ROOT 本身是否需要扩张；结论为不需要。
 
 ### Final Outcome
 
-本轮新增并冻结：
+Evan-building v1 已在独立 repository 中完成 baseline deployment：
 
 ```text
-foundation/human-layer-skills.md
+eab2df4d8d2458c7f5a0ec0129ecef118bb84690
+feat: bootstrap Evan-building capability system
 ```
 
-同时最小更新：
+本轮对 ROOT 的主要结果不是新增能力，而是一次真实验证：
 
-```text
-foundation/foundation.md
-README.md
-```
+> **ROOT 当前项目范式足以支持一个复杂 downstream project 从设计到独立分发，同时保持 ROOT 与 downstream runtime 解耦。**
 
-明确边界：
+本轮没有修改：
 
-- Human Layer 属于人类侧；
-- `human-layer-skills.md` 不进入 GPT Project Files；
-- 不参与 AI routing；
-- 不加入 Active Routes；
-- 不修改 Attention Compression Protocol；
-- 不新增测试体系。
+- `foundation/foundation.md`
+- `foundation/human-layer-skills.md`
+- `project-instruction.md`
+- `src/skills/attention-compression-protocol.md`
+- tests baseline
 
-本轮 implementation baseline 已完成内容冻结。
+也没有新增 ROOT skill、code route、目录或测试体系。
+
+Evan-building 中的 Learning Skill、Session Stewardship、Primary Growth Lane、Algorithm Maintenance Lane 等设计当前仍视为 downstream-specific decisions，不自动升级为 ROOT 通用范式。
 
 ---
 
@@ -205,64 +242,98 @@ attention-compression-protocol.md
 main
 ```
 
-上一轮 implementation baseline：
+当前 ROOT `origin/main` HEAD（本轮归档前）：
+
+```text
+173098b8d8dd8cafacaf13317654b268d8bc8553
+docs: update human layer project context
+```
+
+当前 ROOT implementation baselines 保持：
 
 ```text
 e77d4f95a5a97c9f0a08babafe665fe6e3a57a0c
 feat: add project routing, attention compression protocol, and test baseline
 ```
 
-本轮 Human Layer implementation baseline 已提交并同步至 `origin/main`：
-
 ```text
 0b196dc728408f28944fb78e25daa7ba38efc61c
 feat: add human layer collaboration skills
 ```
 
-该 SHA 表示本轮 Human Layer implementation 的完整实现状态：
+本轮没有 ROOT implementation change。
+
+本轮新增的只是：
+
+- `context/archive/history.md` rolling append；
+- `context/snap/current.md` context refresh。
+
+承载本次归档自身的 context-only commit 不嵌入本文件；需要时从 Git history 解析。
+
+External downstream distribution evidence：
 
 ```text
-foundation/human-layer-skills.md
-foundation/foundation.md
-README.md
+Evan-building
+eab2df4d8d2458c7f5a0ec0129ecef118bb84690
+feat: bootstrap Evan-building capability system
 ```
 
-`context/archive/history.md` 与 `context/snap/current.md` 不属于该 implementation commit，将作为后续 context-only commit 提交。
-
-承载本快照自身的 commit 不嵌入文件；需要时从 Git history 解析。
+该 SHA 仅作为本次 distribution validation 的外部证据锚点，不构成 ROOT runtime dependency。
 
 ---
 
 ## 7. Current Boundaries
 
-已经成立的当前边界：
+已经成立并继续保持的边界：
 
 - Human Layer 与 AI Layer 分离；
 - Human Layer 具体 meta-skills 只由 `foundation/human-layer-skills.md` 维护；
 - AI 只需要知道 Human Layer 的存在、职责与边界，不默认读取或执行其中内容；
 - `project-instruction.md` 的 Active Routes 保持只面向 AI capability；
 - Attention Compression Protocol 继续只负责 AI 输出前的信息选择与表达压缩；
-- Human Layer 不自动升级为固定 prompt template、审批流程或 state machine。
+- ROOT 不保存 downstream project 的当前状态；
+- ROOT 不成为 downstream project 的中央控制器、共享状态源或 runtime dependency；
+- downstream-specific patterns 不因单次成功案例自动升级为 ROOT universal rules。
+
+本轮新增的当前 evidence：
+
+> **downstream project 可以吸收 ROOT 原则与骨架后独立运行，ROOT 无需参与其日常 runtime。**
 
 仍需保持警惕：
 
-- Human Layer 如果继续无证据扩张，可能重新制造人类 review burden；
+- Human Layer 如果无证据扩张，可能重新制造人类 review burden；
 - externalization 与 stepwise control 应按任务 consequence 动态使用，不能机械 ritualize；
-- Attention Compression Protocol 仍存在已知的语义覆盖风险。
-
-这些边界已经足以指导实际使用，不支持继续因理论可能性扩建 Human Layer、AI protocol 或测试系统。
+- Attention Compression Protocol 仍存在已知语义覆盖风险；
+- 不应因为 Evan-building 一次成功实践，就把其特有 Learning / Session 设计提前泛化到所有项目。
 
 ---
 
 ## 8. Next Stage
 
-ROOT 继续处于实际使用阶段：
+ROOT 继续处于：
 
-> **使用当前 AI Layer 与 Human Layer baseline，在真实项目协作中验证它们是否持续降低 drift、ambiguity 与人类 review burden。**
+> **Operational Use**
 
-默认不继续修改：
+下一阶段不是继续扩建 ROOT。
 
-- `foundation/human-layer-skills.md`
-- `src/skills/attention-compression-protocol.md`
+默认行为是：
 
-只有真实使用中反复出现、明显影响正确性、可控性或人工成本的问题，才重新触发窄幅修正或新增能力。
+> **继续使用当前 baseline 支持真实项目设计、重构与分发，并观察是否反复出现相同的架构 friction。**
+
+Evan-building 从此进入独立运行阶段，由其自身负责后续 capability-building runtime。
+
+ROOT 默认不跟踪其日常状态。
+
+只有多个真实项目反复暴露出同类、明显影响：
+
+- correctness；
+- controllability；
+- human attention；
+- review burden；
+- maintainability；
+
+的问题时，才重新进入 ROOT 通用范式修正。
+
+否则：
+
+> **保持当前 baseline，继续使用。**
