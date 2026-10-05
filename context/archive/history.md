@@ -57,7 +57,7 @@ ROOT 不作为其他项目的中央控制器或运行时系统。
 
 ### Next
 
-完成必要 Git 基础配置后，停止继续扩建 ROOT。
+完成必要初始化后，停止继续扩建 ROOT。
 
 ROOT 的第一次真实使用将是：
 
@@ -77,30 +77,6 @@ ROOT 第一轮最小初始化正式完成。
 * `foundation/foundation.md`
 * `context/snap/current.md`
 * `context/archive/history.md`
-* `.gitignore`
-* `.gitattributes`
-* `data/.gitkeep`
-
-Git 已完成初始化、首次提交并同步远程。
-
-Baseline commit：
-
-```text
-5293f776627a15c6863a84eacf7c248ff5bdbe0d
-feat: initialize p-root project
-```
-
-当前主分支：
-
-```text
-main
-```
-
-当前远程状态：
-
-```text
-origin/main
-```
 
 ### Current Decision
 
@@ -164,7 +140,7 @@ ROOT v0 基础架构到此停止扩建。
 
 当前规模下，所需文件直接进入 GPT Project Files。只有真实膨胀造成加载或维护问题时，才考虑更复杂的路由机制。
 
-`history.md` 继续在外部与 Git 中维护，不装载进 GPT Project Files；需要历史依据时由人类提供。
+`history.md` 继续在外部维护，不装载进 GPT Project Files；需要历史依据时由人类提供。
 
 ### Final Skill
 
@@ -192,7 +168,7 @@ tests/compression-protocol-test/compression-protocol-test-summary.md
 
 ### Final Artifacts
 
-本轮最终形成并纳入 Git：
+本轮最终形成：
 
 ```text
 README.md
@@ -210,17 +186,6 @@ current.md
 project-instruction.md
 attention-compression-protocol.md
 ```
-
-### Implementation Baseline
-
-```text
-e77d4f95a5a97c9f0a08babafe665fe6e3a57a0c
-feat: add project routing, attention compression protocol, and test baseline
-```
-
-该提交位于 `main` 与 `origin/main`，表示修改 Current 与 History 之前的完整实现状态。
-
-承载本归档条目的 commit 不嵌入文件，以 Git history 为准。
 
 ### Next
 
@@ -326,7 +291,7 @@ Evan-building 最终被设计为独立的 capability-building control plane。
   - Learning；
   - Session Stewardship；
   - Attention Compression；
-- training code 与长期 artifacts 继续维护为独立 sibling Git repositories，而不是纳入 Evan-building repo；
+- training code 与长期 artifacts 继续维护为独立 sibling repositories / work surfaces，而不是纳入 Evan-building control-plane repository；
 - ROOT 只承担 build-time design / bootstrap / distribution，不成为 Evan-building 的 runtime dependency。
 
 这些决策属于 Evan-building 的当前项目设计与 ROOT 范式的一次应用，不自动升级为 ROOT 的通用规则。
@@ -367,14 +332,9 @@ Evan-building 中出现的 Learning Skill、Session Stewardship、Primary Growth
 
 ### Distribution Result
 
-Evan-building v1 baseline 已由人类在独立 repository 中完成部署、提交并同步至远程：
+Evan-building v1 baseline 已由人类在独立 repository 中完成部署与分发。
 
-```text
-eab2df4d8d2458c7f5a0ec0129ecef118bb84690
-feat: bootstrap Evan-building capability system
-```
-
-该 commit 仅作为本次 downstream distribution 的外部证据锚点。
+该结果作为本次 downstream distribution validation 的外部证据。
 
 ROOT 不保存 Evan-building 的后续 Current State，也不负责其日常 capability-building runtime。
 
@@ -387,4 +347,96 @@ Evan-building 从此进入独立运行阶段，由其自身维护 North Star、C
 ROOT 默认不因本次成功案例继续扩建设计。
 
 后续继续使用当前 baseline 支持真实项目设计、重构与分发；只有多个实践反复暴露出同类、明显影响正确性、可控性或人工成本的问题时，才重新进入 ROOT 通用范式修正。
+
+---
+
+## 2026-10-05 — Downstream Refactor and Workflow Generalization Validation
+
+### Purpose
+
+本轮继续将 ROOT 当前 baseline 用于已经进入实际运行阶段的 downstream project，而不是创建新的项目骨架。
+
+主要任务包括：
+
+- 在新的招聘与职业策略 evidence 下，对 Evan-building 的长期目标约束做最小校准；
+- 检查已有 capability-building runtime 是否需要随目标变化而重构；
+- 将一个已经真实运行的 QD-oriented 招聘数据采集与处理 workflow 泛化为可承载更广 quant-compatible engineering opportunity surface 的统一数据 contract；
+- 同时检查 ROOT 自身是否需要新增原则、skill、code route 或项目结构。
+
+### Downstream Refactor Validation
+
+Evan-building 原有 capability-building baseline、Active Slice、Learning / Session / Attention skills 与 capability model 均继续有效。
+
+本轮只对真正受到新 evidence 影响的 authoritative sources 做局部调整：
+
+- Quant 继续作为长期 trajectory；
+- Shanghai QD 继续作为 preferred direct entry / primary recruiting target；
+- first-job title 不再作为硬约束，高质量 quant-compatible engineering role 被允许作为有效职业入口；
+- 在长期能力演进中加入从 primitive ownership 到 abstraction / OSS / AI leverage，再到真实 operated artifact 的薄原则；
+- 没有新增 Product Lane、Product Skill、长期课程、tracker 或额外状态层。
+
+该实践进一步验证：
+
+> **一个 downstream project 在真实目标发生变化后，可以通过修改 authoritative sources 与少量当前状态完成局部 refactor，而不需要重构已经工作的 runtime。**
+
+这些 career strategy 与 artifact-progression 决策仍属于 Evan-building 自身，不自动升级为 ROOT universal rules。
+
+### Workflow Generalization Validation
+
+现有 BOSS 招聘数据 workflow 已经经过真实使用验证，并保持：
+
+```text
+raw observation
+→ canonical JSONL
+→ lightweight index
+```
+
+本轮没有重建该 workflow，也没有重写经过测试的 collector 行为。
+
+实际修改集中在已经暴露出的硬编码与 contract drift：
+
+- QD-specific role taxonomy 扩展为可承载 Quant 与相邻 engineering role families 的统一分类；
+- capability evidence 从早期 QD-oriented signals 扩展为共享 engineering capability dimensions；
+- canonical 与 index 层同步泛化；
+- 保留 raw provenance、salary visual verification、field status 与 QA 边界；
+- 不把 Evan-specific fit score、career priority 或推荐结果写入 canonical source data。
+
+该实践验证：
+
+> **当 workflow 已经稳定工作时，优先解除真实暴露出的 hard coding，并保留已验证的结构与行为，比整体重建更符合 ROOT 的 Attention Budget、Resolution Discipline 与 Evidence-Driven Expansion。**
+
+具体岗位 taxonomy 与招聘 schema 仍属于 downstream workflow design，不升级为 ROOT 通用数据范式。
+
+### Archive Simplification
+
+本轮同时对 ROOT 的 Current Snapshot 与 Rolling History 做最小维护负担清理。
+
+历史与当前状态不再长期维护可由版本控制系统自身提供、但会增加归档维护成本的 operational metadata。
+
+项目真实目录结构、独立 repository / artifact boundary，以及历史事件本身继续保留。
+
+该调整不改变 ROOT 的项目职责或 canonical-state model，只减少归档文件中不影响当前判断与历史理解的维护信息。
+
+### Result
+
+本轮没有触发：
+
+- ROOT Foundation 修改；
+- 新 project-local skill；
+- 新 code route；
+- 新目录；
+- 新测试层；
+- 新跨项目 dependency。
+
+因此当前结论继续保持：
+
+> **ROOT baseline remains sufficient; no architecture expansion is triggered.**
+
+### Next
+
+ROOT 继续处于 Operational Use。
+
+后续继续用当前 baseline 支持真实项目设计、局部 refactor、workflow simplification 与分发。
+
+只有多个真实项目反复暴露出同类、明显影响 correctness、controllability、human attention、review burden 或 maintainability 的问题时，才重新进入 ROOT 通用范式修正。
 
