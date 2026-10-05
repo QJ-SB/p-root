@@ -1,14 +1,14 @@
 # ROOT — Current Snapshot
 
-**Snapshot Date:** 2026-09-21  
+**Snapshot Date:** 2026-10-05  
 **Stage:** Operational Use  
-**Status:** Project routing, Attention Compression Protocol, Human Layer baseline, and downstream bootstrap validation operational
+**Status:** Project routing, Attention Compression Protocol, Human Layer baseline, and downstream bootstrap / refactor validation operational
 
 ---
 
 ## 1. Current Position
 
-ROOT 的最小项目骨架保持稳定，并已完成一次真实 downstream project bootstrap / distribution validation。
+ROOT 的最小项目骨架保持稳定，并已在真实 downstream project 的 bootstrap、运行后目标调整与 workflow 泛化中继续得到验证。
 
 现有 AI 侧 baseline 保持不变：
 
@@ -26,14 +26,14 @@ foundation/human-layer-skills.md
 
 该文件只供人类阅读和维护，不进入 GPT Project Files，不参与 AI routing，也不作为 AI 行为指令。
 
-本轮真实使用中，ROOT 被用于设计并 bootstrap 独立的 Evan-building 项目。该实践验证了：
+截至本轮真实使用，ROOT 已验证：
 
-- ROOT 当前最小骨架能够承载复杂 downstream project 的设计与分发；
-- downstream project 可以吸收 ROOT 原则后独立运行；
-- ROOT 不需要成为跨项目中央控制器、共享状态源或 runtime dependency；
+- 当前最小骨架能够支持复杂 downstream project 的设计、独立运行与后续局部 refactor；
+- downstream project 在目标发生真实变化后，可以通过修改自身 authoritative sources 完成校准，而不需要 ROOT 参与其 runtime；
+- 已经稳定工作的 workflow 可以优先保留，只解除真实暴露出的 hard-coded assumptions，而不必整体重建；
 - 本轮没有出现需要修改 ROOT Foundation、router、Attention Compression Protocol、Human Layer 或测试体系的重复性问题。
 
-因此当前结论是：
+因此当前结论仍然是：
 
 > **ROOT baseline remains sufficient; no architecture expansion is triggered.**
 
@@ -140,7 +140,7 @@ ROOT 当前唯一最新事实来源，采用覆盖更新。
 
 ROOT 唯一长期 rolling archive，采用“压缩 → 加时间戳 → 追加”。
 
-它在 Git 中维护，但不装载进 GPT Project Files；需要历史依据时，由人类提供相关文件或片段。
+它不装载进 GPT Project Files；需要历史依据时，由人类提供相关文件或片段。
 
 ### `src/skills/attention-compression-protocol.md`
 
@@ -160,11 +160,11 @@ Attention Compression Protocol 当前冻结的最后一次测试汇总，也是�
 
 ### Purpose
 
-将 ROOT 当前已经建立的最小项目范式用于一个真实 downstream project：
+继续使用 ROOT 当前 baseline 处理一个已经运行中的 downstream project 与其相邻 workflow 的真实变化：
 
-> **设计并 bootstrap 独立的 Evan-building capability-building project。**
+> **在不扩大 ROOT 自身结构的前提下，对 Evan-building 的职业目标约束和招聘数据工作流进行最小、证据驱动的 refactor。**
 
-同时观察 ROOT 在面对长期能力状态、学习运行方式、Session 管理、外部 artifact 与复杂业务 evidence 时，是否会重新产生：
+同时观察 ROOT 在面对目标演化、已有稳定 workflow、数据 schema 泛化与 downstream project ownership 时，是否会重新产生：
 
 - architecture inflation；
 - duplicate state；
@@ -176,41 +176,30 @@ Attention Compression Protocol 当前冻结的最后一次测试汇总，也是�
 
 本轮主要经过：
 
-1. 从真实上海 QD Market Truth、Hiring Interface 和 Evan Capability evidence 出发，确认 downstream project 的目标与边界。
-2. 依据 ROOT 的 Single Responsibility 和 Minimal Vertical Slice 原则，将能力建设统一收敛为一个 Evan-building project，而不是拆成多个自治学习项目。
-3. 讨论并冻结 Active Slice、Session、Capability State、Primary Growth Lane 与 Algorithm Maintenance Lane 的职责边界。
-4. 将 AI leverage 与 human internalization 分离，形成 downstream-specific Learning Skill。
-5. 将 context-health / rollover / archive concern 分离，形成 downstream-specific Session Stewardship Skill。
-6. 将 ROOT 的 Attention Compression 思想迁移为 Evan-building 的本地 project skill，避免 runtime dependency。
-7. 保持 Current + Rolling History pattern，并将训练 artifacts 继续留在独立 sibling repositories。
-8. 对 Evan-building Foundation、Current、router 和 skills 做 duplication / attention-cost cleanup。
-9. Evan-building v1 baseline 由人类独立部署、commit 并同步至远程。
-10. 检查 ROOT 本身是否需要扩张；结论为不需要。
+1. 基于 Evan-building 已有 capability state、真实招聘思考与后续 career-entry strategy，识别出旧 North Star 中“第一份工作必须直接进入上海 QD”的过硬约束。
+2. 对 Evan-building 做最小 refactor：保留 Quant-directed / QD-primary 方向，同时允许高质量 quant-compatible engineering role 作为有效职业入口。
+3. 将成熟 capability 从 isolated demo 逐步走向 leveraged integration / operated artifact 的长期方向写入 downstream Foundation，但没有新增 Product Lane、skill、protocol 或独立 roadmap。
+4. 保持 Evan-building 已经正常工作的 Current、Active Slice、Capability Model、Algorithm Lane 与 skills 架构，仅同步真正受新决策影响的 authoritative sources。
+5. 对既有 BOSS 招聘数据工作流做保守泛化：保留 raw → canonical → index 三级结构和已经验证的 collector 行为，只解除 QD-specific taxonomy / evidence hard-coding，并修正已有 contract drift。
+6. 检查这些实践是否暴露 ROOT 自身需要修正的通用问题；结论为不需要。
 
 ### Final Outcome
 
-Evan-building v1 已在独立 repository 中完成 baseline deployment：
+本轮对 ROOT 的主要结果仍然不是新增能力，而是进一步验证现有原则：
 
-```text
-eab2df4d8d2458c7f5a0ec0129ecef118bb84690
-feat: bootstrap Evan-building capability system
-```
+> **真实 downstream project 可以在目标变化后自行完成局部校准；稳定 workflow 可以通过解除已暴露的硬编码实现泛化，而无需触发上层架构扩张。**
 
-本轮对 ROOT 的主要结果不是新增能力，而是一次真实验证：
+本轮没有修改 ROOT 的：
 
-> **ROOT 当前项目范式足以支持一个复杂 downstream project 从设计到独立分发，同时保持 ROOT 与 downstream runtime 解耦。**
-
-本轮没有修改：
-
-- `foundation/foundation.md`
-- `foundation/human-layer-skills.md`
-- `project-instruction.md`
-- `src/skills/attention-compression-protocol.md`
-- tests baseline
+- `foundation/foundation.md`；
+- `foundation/human-layer-skills.md`；
+- `project-instruction.md`；
+- `src/skills/attention-compression-protocol.md`；
+- tests baseline。
 
 也没有新增 ROOT skill、code route、目录或测试体系。
 
-Evan-building 中的 Learning Skill、Session Stewardship、Primary Growth Lane、Algorithm Maintenance Lane 等设计当前仍视为 downstream-specific decisions，不自动升级为 ROOT 通用范式。
+Evan-building 本轮形成的 career-entry strategy、capability-to-operated-artifact progression，以及招聘数据 schema taxonomy 仍视为 downstream-specific decisions，不自动升级为 ROOT 通用范式。
 
 ---
 
@@ -234,55 +223,7 @@ attention-compression-protocol.md
 
 ---
 
-## 6. Git State
-
-当前主分支：
-
-```text
-main
-```
-
-当前 ROOT `origin/main` HEAD（本轮归档前）：
-
-```text
-173098b8d8dd8cafacaf13317654b268d8bc8553
-docs: update human layer project context
-```
-
-当前 ROOT implementation baselines 保持：
-
-```text
-e77d4f95a5a97c9f0a08babafe665fe6e3a57a0c
-feat: add project routing, attention compression protocol, and test baseline
-```
-
-```text
-0b196dc728408f28944fb78e25daa7ba38efc61c
-feat: add human layer collaboration skills
-```
-
-本轮没有 ROOT implementation change。
-
-本轮新增的只是：
-
-- `context/archive/history.md` rolling append；
-- `context/snap/current.md` context refresh。
-
-承载本次归档自身的 context-only commit 不嵌入本文件；需要时从 Git history 解析。
-
-External downstream distribution evidence：
-
-```text
-Evan-building
-eab2df4d8d2458c7f5a0ec0129ecef118bb84690
-feat: bootstrap Evan-building capability system
-```
-
-该 SHA 仅作为本次 distribution validation 的外部证据锚点，不构成 ROOT runtime dependency。
-
----
-
-## 7. Current Boundaries
+## 6. Current Boundaries
 
 已经成立并继续保持的边界：
 
@@ -295,20 +236,20 @@ feat: bootstrap Evan-building capability system
 - ROOT 不成为 downstream project 的中央控制器、共享状态源或 runtime dependency；
 - downstream-specific patterns 不因单次成功案例自动升级为 ROOT universal rules。
 
-本轮新增的当前 evidence：
+截至本轮新增并继续成立的 evidence：
 
-> **downstream project 可以吸收 ROOT 原则与骨架后独立运行，ROOT 无需参与其日常 runtime。**
+> **downstream project 可以吸收 ROOT 原则后独立运行，并在现实目标变化时通过自身 authoritative sources 完成局部 refactor；稳定 workflow 也可以通过解除已暴露的硬编码进行泛化，而无需 ROOT 参与其 runtime。**
 
 仍需保持警惕：
 
 - Human Layer 如果无证据扩张，可能重新制造人类 review burden；
 - externalization 与 stepwise control 应按任务 consequence 动态使用，不能机械 ritualize；
 - Attention Compression Protocol 仍存在已知语义覆盖风险；
-- 不应因为 Evan-building 一次成功实践，就把其特有 Learning / Session 设计提前泛化到所有项目。
+- 不应因为 Evan-building 的 career-entry strategy、Learning / Session 设计、artifact progression 或招聘 schema 泛化在当前实践中有效，就提前将其泛化为 ROOT universal rules。
 
 ---
 
-## 8. Next Stage
+## 7. Next Stage
 
 ROOT 继续处于：
 
@@ -320,7 +261,7 @@ ROOT 继续处于：
 
 > **继续使用当前 baseline 支持真实项目设计、重构与分发，并观察是否反复出现相同的架构 friction。**
 
-Evan-building 从此进入独立运行阶段，由其自身负责后续 capability-building runtime。
+Evan-building 继续独立运行，由其自身负责 capability-building runtime 与后续局部演化。
 
 ROOT 默认不跟踪其日常状态。
 
